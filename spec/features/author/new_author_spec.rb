@@ -25,4 +25,13 @@ describe "New author page", type: :feature do
 
     expect(Author.where(first_name: 'Alan', last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing').count).to eq(1)
   end
+
+  it "should validate the presence of first name, last name, and homepage" do
+    @author = Author.new(last_name: 'Turing', homepage: 'http://wikipedia.org/Alan_Turing')
+    expect(@author.valid?).to eq(false)
+    @author = Author.new(first_name: 'Alan', homepage: 'http://wikipedia.org/Alan_Turing')
+    expect(@author.valid?).to eq(false)
+    @author = Author.new(first_name: 'Alan', last_name: 'Turing')
+    expect(@author.valid?).to eq(false)
+  end
 end
