@@ -34,4 +34,12 @@ describe "New author page", type: :feature do
     @author = Author.new(first_name: 'Alan', last_name: 'Turing')
     expect(@author.valid?).to eq(false)
   end
+
+  it "should show an error message when validation fails" do
+    visit new_author_path
+
+    find('input[type="submit"]').click
+
+    expect(page).to have_text("error")
+  end
 end
