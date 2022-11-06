@@ -4,4 +4,5 @@
 <%= link_to @author.homepage, @author.homepage %><br>
 
 <%= link_to 'Edit', edit_author_path(@author) %><br>
-<%= link_to 'Back', authors_path %>
+<%= link_to 'Back', authors_path %><br>
+<%= link_to 'Delete', author_path(@author), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
