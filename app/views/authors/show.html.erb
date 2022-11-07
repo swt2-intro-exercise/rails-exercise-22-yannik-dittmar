@@ -5,7 +5,7 @@
 
 <h2>Papers:</h2>
 <ul>
-  <% @author.papers do |paper| %>
+  <% @author.papers.each do |paper| %>
     <li>
         <%= link_to paper.title, paper_path(paper) %>
     </li>
