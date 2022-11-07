@@ -3,6 +3,15 @@
 <span>Homepage: </span>
 <%= link_to @author.homepage, @author.homepage %><br>
 
+<h2>Papers:</h2>
+<ul>
+  <% @author.papers do |paper| %>
+    <li>
+        <%= link_to paper.title, paper_path(paper) %>
+    </li>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_author_path(@author) %><br>
 <%= link_to 'Back', authors_path %><br>
 <%= link_to 'Delete', author_path(@author), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
